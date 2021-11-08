@@ -1,5 +1,7 @@
 package bsu.comp152;
 
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -27,6 +29,8 @@ public class Main {
             System.out.println("something went wrong, we will close now");
             System.exit(-1);
         }
-        System.out.println(response);
+        var usefulData=response.body(); //responce is object, body() is method called on object
+        System.out.println(usefulData);
+        var dataParser=new Gson();
     }
 }
