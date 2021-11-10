@@ -25,12 +25,16 @@ public class Main {
         catch (InterruptedException e){
             System.out.println("An error occurred getting a response from the server");
         }
-        if (response==null){ //if responce is null then we quit
+        if (response==null){ //if response is null then we quit
             System.out.println("something went wrong, we will close now");
             System.exit(-1);
         }
         var usefulData=response.body(); //responce is object, body() is method called on object
         System.out.println(usefulData);
         var dataParser=new Gson();
+        UniversityDataType[] parsedData=dataParser.fromJson(usefulData, UniversityDataType[].class);
+        for(var currentUniversity: parsedData){
+            System.out.println(currentUniversity);
+        }
     }
 }
